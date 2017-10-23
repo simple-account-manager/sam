@@ -1,0 +1,23 @@
+<md-card class="card">
+  <md-card-header>
+    <div md-card-avatar class="card-title">
+      Please enter your masterkey
+    </div>
+  </md-card-header>
+  <md-card-content>
+    <p class="absolute">
+      <md-input-container class="full-width">
+        <input mdInput placeholder="Masterkey" [(ngModel)]="masterkey" type="{{hidePw ? 'password' : 'text'}}" (keyup.enter)="login()">
+        <md-hint *ngIf="errorMessage.length > 0" [ngStyle]="{'color': 'red'}" align="start">{{errorMessage}}</md-hint>
+      </md-input-container>
+      <button md-icon-button disableRipple="true" (click)="hidePw = !hidePw" class="right">
+        <md-icon *ngIf="hidePw">visibility</md-icon>
+        <md-icon *ngIf="!hidePw">visibility_off</md-icon>
+      </button>
+    </p>
+  </md-card-content>
+  <md-card-actions align="right">
+    <button md-raised-button (click)="login()">Login</button>
+    <button md-raised-button (click)="clear()" color="accent">clear</button>
+  </md-card-actions>
+</md-card>

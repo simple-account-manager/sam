@@ -1,0 +1,19 @@
+<h1 md-dialog-title>{{keyObj.title}}</h1>
+<md-dialog-content>
+  <div *ngIf="keyObj.type === 'Account'">
+    <table>
+      <tr>
+        <td><strong>Username</strong>:</td>
+        <td>{{keyObj.user}}</td>
+      </tr>
+      <tr>
+        <td><strong>Password</strong>:</td>
+        <td>{{keyObj.pass}}</td>
+      </tr>
+    </table>
+  </div>
+  <div class="pre" *ngIf="keyObj.type !== 'Account'">{{keyObj.text}}</div>
+</md-dialog-content>
+<md-dialog-actions align="right">
+  <button md-raised-button md-dialog-close>Close</button>
+</md-dialog-actions>

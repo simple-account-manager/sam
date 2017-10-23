@@ -1,0 +1,40 @@
+<h1 md-dialog-title *ngIf="mode === 'create'">Create new key</h1>
+<h1 md-dialog-title *ngIf="mode === 'edit'">Edit</h1>
+<md-dialog-content>
+  <span class="type">Type:</span>
+  <md-select placeholder="Type" [(ngModel)]="keyObj.type" name="type" floatPlaceholder="never" color="accent">
+    <md-option *ngFor="let type of ['Account', 'Text']" [value]="type">
+      {{type}}
+    </md-option>
+  </md-select>
+  <md-input-container class="full-width title" color="accent">
+    <input mdInput placeholder="{{mode === 'create' ? 'Title (Facebook...)' : 'Title' }}" [(ngModel)]="keyObj.title">
+    <md-hint *ngIf="error.title !== ''" [ngStyle]="{'color': 'red'}" align="start">{{error.title}}</md-hint>
+  </md-input-container>
+  <div *ngIf="keyObj.type === 'Account'">
+    <md-input-container class="full-width" color="accent">
+      <input mdInput placeholder="Username" value="" [(ngModel)]="keyObj.user">
+      <md-hint *ngIf="error.user !== ''" [ngStyle]="{'color': 'red'}" align="start">{{error.user}}</md-hint>
+    </md-input-container>
+    <span class="relative">
+      <md-input-container class="full-width" color="accent">
+        <input mdInput placeholder="Password" [(ngModel)]="keyObj.pass" type="{{hidePw ? 'password' : 'text'}}">
+        <md-hint *ngIf="error.pass !== ''" [ngStyle]="{'color': 'red'}" align="start">{{error.pass}}</md-hint>
+      </md-input-container>
+      <button md-icon-button disableRipple="true" (click)="hidePw = !hidePw" class="right">
+        <md-icon *ngIf="hidePw">visibility</md-icon>
+        <md-icon *ngIf="!hidePw">visibility_off</md-icon>
+      </button>
+    </span>
+  </div>
+  <div *ngIf="keyObj.type !== 'Account'">
+    <md-input-container class="full-width" color="accent">
+      <textarea mdInput placeholder="Text" [(ngModel)]="keyObj.text" maxlength="200" rows="4"></textarea>
+      <md-hint *ngIf="error.text !== ''" [ngStyle]="{'color': 'red'}" align="start">{{error.text}}</md-hint>
+    </md-input-container>
+  </div>
+</md-dialog-content>
+<md-dialog-actions align="right">
+  <button md-raised-button md-dialog-close>Close</button>
+  <button md-raised-button (click)="save($event)" class="save-btn">Save</button>
+</md-dialog-actions>

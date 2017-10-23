@@ -1,0 +1,9 @@
+<md-tab-group (selectChange)="onSelect($event)">
+  <md-tab label="Account">
+    <app-keylist type="Account"></app-keylist>
+  </md-tab>
+  <md-tab label="Text">
+    <app-keylist type="Text"></app-keylist>
+  </md-tab>
+</md-tab-group>
+<button md-fab class="tab" color="primary" (click)="openCreateDialog()"><md-icon>add</md-icon></button>

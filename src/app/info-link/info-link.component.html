@@ -1,0 +1,9 @@
+<div>
+  <a id="{{id}}" md-button color="accent" class="info" (click)="showDesc($event)">
+    {{linktext}}
+    <md-icon>arrow_drop_down</md-icon>
+  </a>
+  <div [class.hide]="!show" class="content">
+    <ng-content></ng-content>
+  </div>
+</div>

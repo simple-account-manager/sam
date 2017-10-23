@@ -1,3 +1,21 @@
-<h1>
-  {{title}}
-</h1>
+<input type="checkbox" id="navToggler" style="display: none">
+<div class="head mat-calendar-body-selected">
+  <a id="home" md-button routerLink="/keylist">
+    <md-icon>lock</md-icon>
+    <span>Accountmanager</span>
+  </a>
+  <label class="xs-show pointer" for="navToggler">
+    <md-icon class="fa">menu</md-icon>
+    <md-icon class="fa">close</md-icon>
+  </label>
+</div>
+
+<div id="nav" class="nav">
+  <app-nav [auth]="isAuthenticated()"></app-nav>
+</div>
+<label for="navToggler" class="overlay"></label>
+<div class="contentContainer">
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

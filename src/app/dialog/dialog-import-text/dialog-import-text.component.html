@@ -1,0 +1,11 @@
+<h1 md-dialog-title>Import from text</h1>
+<md-dialog-content>
+  <md-input-container class="full-width" color="accent">
+    <textarea mdInput placeholder="Please add copied text here..." [(ngModel)]="text" rows="7"></textarea>
+    <md-hint *ngIf="error !== ''" [ngStyle]="{'color': 'red'}" align="start">{{error}}</md-hint>
+  </md-input-container>
+</md-dialog-content>
+<md-dialog-actions align="right">
+  <button md-raised-button md-dialog-close>Close</button>
+  <button md-raised-button (click)="import($event)" class="save-btn">Import</button>
+</md-dialog-actions>

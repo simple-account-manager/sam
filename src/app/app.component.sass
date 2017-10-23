@@ -1,0 +1,119 @@
+@import ../sass-config
+$head-height: 50px
+$nav-width: 300px
+$nav-bg-color: #34414f
+$content-bg-color: $bg-color
+
+.head
+  height: $head-height
+  top: 0
+  position: fixed
+  width: 100%
+  box-sizing: border-box
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+  z-index: 103
+  display: flex
+  align-items: center
+.head a
+  font-size: 21px
+
+.head label
+  position: fixed
+  top: 7px
+  right: 10px
+.head .fa
+  font-size: 35px
+.head .fa-lock
+  margin-right: 10px
+#navToggler + .head label .fa:last-child
+  display: none
+#navToggler:checked + .head label .fa:first-child
+  display: none
+#navToggler:checked + .head label .fa:last-child
+  display: block
+
+.nav
+  position: fixed
+  height: 100%
+  width: $nav-width
+  z-index: 102
+  box-sizing: border-box
+  padding: 15px 5px 5px
+  animation: animationleft 0.4s
+  background: #fff
+  box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12)
+
+button
+  display: none
+.overlay
+  display: none
+  position: fixed
+  height: 100%
+  width: 100%
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  background-color: rgba(0,0,0,0.5)
+  z-index: 100
+.contentContainer
+  margin: $head-height 0 0 $nav-width
+  transition: margin-left .4s
+  position: relative
+  height: 100%
+.content
+  position: relative
+  padding: 10px
+  overflow-y: auto
+  overflow-x: hidden
+  max-width: $max-content-width
+  margin: 0 auto
+  height: 100%
+  box-sizing: border-box
+
+#navToggler:checked ~ .nav, #navToggler:checked ~ .overlay
+  display: block
+
+@media only screen and (min-width: $breakpointMobile)
+  .nav
+    display: block!important
+  .overlay
+    display: none!important
+  .xs-show
+    display: none
+  .xs-hide
+    display: block
+
+@media only screen and (max-width: $breakpointMobile)
+  .nav, xs-hide
+    display: none
+    animation: animationRight 0.4s
+    right: 0
+  .contentContainer
+    margin: $head-height 0 0 0
+  xs-show
+    display: block
+
+@keyframes animationleft
+  0%
+    left: -$nav-width
+    opacity: 0
+  100%
+    left: 0
+    opacity: 1
+@keyframes animationRight
+  0%
+    right: -$nav-width
+    opacity: 0
+  100%
+    right: 0
+    opacity: 1
+
+.placeholder
+  width: 100%
+  height: 400px
+  background-color: cornflowerblue
+  margin: 20px auto
+
+.mat-icon
+  margin-right: 10px

@@ -1,0 +1,25 @@
+<md-list>
+    <div *ngIf="dataArray.length === 0">
+      <p>Please add some {{type}} item...</p>
+    </div>
+    <div *ngIf="dataArray.length > 0">
+      <md-list-item *ngFor="let data of dataArray" (click)="openKey(data.created)" (classList)="mat-menu-item">
+        {{data.title}}
+        <button md-icon-button [mdMenuTriggerFor]="menu" (click)="openOption($event, data.created)">
+          <md-icon>more_vert</md-icon>
+        </button>
+      </md-list-item>
+    </div>
+</md-list>
+
+<md-menu #menu="mdMenu">
+  <button md-menu-item (click)="editData()">
+    <md-icon>mode_edit</md-icon>
+    <span>Edit</span>
+  </button>
+  <button md-menu-item (click)="deleteData()">
+    <md-icon>delete</md-icon>
+    <span>Delete</span>
+  </button>
+</md-menu>
+
