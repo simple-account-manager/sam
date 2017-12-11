@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {CanActivate, Router} from '@angular/router';
-import {MdSnackBar} from '@angular/material';
+import {MatSnackBar} from '@angular/material';
 import {CryptoService} from './crypto.service';
 import {KeyService} from './key.service';
 import {am_console} from '../app.util';
@@ -14,7 +14,7 @@ export class AuthService implements CanActivate {
 
   constructor(private router: Router,
               private cryptoService: CryptoService,
-              private snackBar: MdSnackBar,
+              private snackBar: MatSnackBar,
               private keyService: KeyService) {
     am_console.log('AuthService Init');
   }

@@ -1,23 +1,23 @@
-<md-card class="card">
-  <md-card-header>
-    <div md-card-avatar class="card-title">
+<mat-card class="card">
+  <mat-card-header>
+    <div mat-card-avatar class="card-title">
       Please enter your masterkey
     </div>
-  </md-card-header>
-  <md-card-content>
+  </mat-card-header>
+  <mat-card-content>
     <p class="absolute">
-      <md-input-container class="full-width">
-        <input mdInput placeholder="Masterkey" [(ngModel)]="masterkey" type="{{hidePw ? 'password' : 'text'}}" (keyup.enter)="login()">
-        <md-hint *ngIf="errorMessage.length > 0" [ngStyle]="{'color': 'red'}" align="start">{{errorMessage}}</md-hint>
-      </md-input-container>
-      <button md-icon-button disableRipple="true" (click)="hidePw = !hidePw" class="right">
-        <md-icon *ngIf="hidePw">visibility</md-icon>
-        <md-icon *ngIf="!hidePw">visibility_off</md-icon>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Masterkey" [(ngModel)]="masterkey" type="{{hidePw ? 'password' : 'text'}}" (keyup.enter)="login()">
+        <mat-hint *ngIf="errorMessage.length > 0" [ngStyle]="{'color': 'red'}" align="start">{{errorMessage}}</mat-hint>
+      </mat-form-field>
+      <button mat-icon-button disableRipple="true" (click)="hidePw = !hidePw" class="right">
+        <mat-icon *ngIf="hidePw">visibility</mat-icon>
+        <mat-icon *ngIf="!hidePw">visibility_off</mat-icon>
       </button>
     </p>
-  </md-card-content>
-  <md-card-actions align="right">
-    <button md-raised-button (click)="login()">Login</button>
-    <button md-raised-button (click)="clear()" color="accent">clear</button>
-  </md-card-actions>
-</md-card>
+  </mat-card-content>
+  <mat-card-actions align="right">
+    <button mat-raised-button (click)="login()">Login</button>
+    <button mat-raised-button (click)="clear()" color="accent">clear</button>
+  </mat-card-actions>
+</mat-card>

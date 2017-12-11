@@ -12,8 +12,8 @@ import {AuthService} from "./service/auth.service";
 import {KeyService} from "./service/key.service";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {
-  MdToolbarModule, MdCardModule, MdButtonModule, MdInputModule, MdIconModule, MdSnackBarModule,
-  MdListModule, MdDialogModule, MdMenuModule, MdTabsModule, MdSelectModule
+  MatToolbarModule, MatCardModule, MatButtonModule, MatInputModule, MatIconModule, MatSnackBarModule,
+  MatListModule, MatDialogModule, MatMenuModule, MatTabsModule, MatSelectModule
 } from "@angular/material";
 import { NavComponent } from './nav/nav.component';
 import {CryptoService} from "./service/crypto.service";
@@ -44,17 +44,17 @@ import { DialogImportTextComponent } from './dialog/dialog-import-text/dialog-im
     FormsModule,
     HttpModule,
     BrowserAnimationsModule,
-    MdToolbarModule,
-    MdCardModule,
-    MdButtonModule,
-    MdInputModule,
-    MdIconModule,
-    MdSnackBarModule,
-    MdListModule,
-    MdDialogModule,
-    MdMenuModule,
-    MdTabsModule,
-    MdSelectModule,
+    MatToolbarModule,
+    MatCardModule,
+    MatButtonModule,
+    MatInputModule,
+    MatIconModule,
+    MatSnackBarModule,
+    MatListModule,
+    MatDialogModule,
+    MatMenuModule,
+    MatTabsModule,
+    MatSelectModule,
     RouterModule.forRoot(routes)
   ],
   entryComponents: [

@@ -4,7 +4,7 @@ import {ImportService} from '../service/import.service';
 import {KeyService} from '../service/key.service';
 import {CryptoService} from '../service/crypto.service';
 import {KeyObjModel} from '../model/key.model';
-import {MdDialog} from '@angular/material';
+import {MatDialog} from '@angular/material';
 import {DialogImportTextComponent} from '../dialog/dialog-import-text/dialog-import-text.component';
 import {am_console} from '../app.util';
 
@@ -20,7 +20,7 @@ export class NavComponent implements OnInit {
 
   constructor(private exportService: ExportService,
               private importService: ImportService,
-              private dialog: MdDialog) { }
+              private dialog: MatDialog) { }
 
   ngOnInit() {
     am_console.log('OnInit NAV: ');

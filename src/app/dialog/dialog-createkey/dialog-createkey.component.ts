@@ -1,6 +1,6 @@
 import {Component, OnInit, Inject} from '@angular/core';
 import {KeyObjModel} from '../../model/key.model';
-import {MD_DIALOG_DATA, MdDialogRef} from '@angular/material';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {KeyService} from '../../service/key.service';
 import {am_console} from '../../app.util';
 import { AmConst } from '../../util/am.const';
@@ -19,8 +19,8 @@ export class DialogCreatekeyComponent implements OnInit {
   mode = '';
 
 
-  constructor(@Inject(MD_DIALOG_DATA) private data: KeyObjModel,
-              public dialogRef: MdDialogRef<DialogCreatekeyComponent>,
+  constructor(@Inject(MAT_DIALOG_DATA) private data: KeyObjModel,
+              public dialogRef: MatDialogRef<DialogCreatekeyComponent>,
               private keyService: KeyService
   ) { }
 

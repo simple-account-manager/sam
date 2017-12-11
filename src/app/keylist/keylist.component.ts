@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild, Input, ChangeDetectionStrategy} from '@angular/core';
-import {MdDialog, MdDialogConfig, MdMenuTrigger} from '@angular/material';
+import {MatDialog, MatDialogConfig, MatMenuTrigger} from '@angular/material';
 import {DialogShowkeyComponent} from '../dialog/dialog-showkey/dialog-showkey.component';
 import {KeyObjModel} from '../model/key.model';
 import {KeyService} from '../service/key.service';
@@ -16,13 +16,13 @@ import {am_console} from '../app.util';
 })
 export class KeylistComponent implements OnInit {
   @Input() type: string;
-  @ViewChild(MdMenuTrigger) trigger: MdMenuTrigger;
+  @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
 
   dataMap: any;
   selectedKeyId: number;
   dataArray: KeyObjModel[] = [];
 
-  constructor(private keyService: KeyService, private dialog: MdDialog) {
+  constructor(private keyService: KeyService, private dialog: MatDialog) {
     am_console.log('keyList init');
 
   }
@@ -54,7 +54,7 @@ export class KeylistComponent implements OnInit {
 
   openKey(id: number) {
     am_console.log('open Key of with id' + id);
-    /* let config: MdDialogConfig = {
+    /* let config: MatDialogConfig = {
       width: '500px'
     }; */
     this.dialog.open(DialogShowkeyComponent, {data: this.dataMap.get(id)});

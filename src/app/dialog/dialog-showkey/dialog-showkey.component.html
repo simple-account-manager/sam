@@ -1,5 +1,5 @@
-<h1 md-dialog-title>{{keyObj.title}}</h1>
-<md-dialog-content>
+<h1 mat-dialog-title>{{keyObj.title}}</h1>
+<mat-dialog-content>
   <div *ngIf="keyObj.type === 'Account'">
     <table>
       <tr>
@@ -13,7 +13,7 @@
     </table>
   </div>
   <div class="pre" *ngIf="keyObj.type !== 'Account'">{{keyObj.text}}</div>
-</md-dialog-content>
-<md-dialog-actions align="right">
-  <button md-raised-button md-dialog-close>Close</button>
-</md-dialog-actions>
+</mat-dialog-content>
+<mat-dialog-actions align="right">
+  <button mat-raised-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

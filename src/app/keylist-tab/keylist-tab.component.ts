@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {MdDialog, MdTabChangeEvent} from '@angular/material';
+import {MatDialog, MatTabChangeEvent} from '@angular/material';
 import {DialogCreatekeyComponent} from '../dialog/dialog-createkey/dialog-createkey.component';
 
 @Component({
@@ -10,12 +10,12 @@ import {DialogCreatekeyComponent} from '../dialog/dialog-createkey/dialog-create
 export class KeylistTabComponent implements OnInit {
 
   currentTab = 'Account';
-  constructor(private dialog: MdDialog) { }
+  constructor(private dialog: MatDialog) { }
 
   ngOnInit() {
   }
 
-  onSelect(event: MdTabChangeEvent) {
+  onSelect(event: MatTabChangeEvent) {
     this.currentTab = event.tab.textLabel;
   }
 

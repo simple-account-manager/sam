@@ -1,40 +1,40 @@
-<h1 md-dialog-title *ngIf="mode === 'create'">Create new key</h1>
-<h1 md-dialog-title *ngIf="mode === 'edit'">Edit</h1>
-<md-dialog-content>
+<h1 mat-dialog-title *ngIf="mode === 'create'">Create new key</h1>
+<h1 mat-dialog-title *ngIf="mode === 'edit'">Edit</h1>
+<mat-dialog-content>
   <span class="type">Type:</span>
-  <md-select placeholder="Type" [(ngModel)]="keyObj.type" name="type" floatPlaceholder="never" color="accent">
-    <md-option *ngFor="let type of ['Account', 'Text']" [value]="type">
+  <mat-select placeholder="Type" [(ngModel)]="keyObj.type" name="type" floatPlaceholder="never" color="accent">
+    <mat-option *ngFor="let type of ['Account', 'Text']" [value]="type">
       {{type}}
-    </md-option>
-  </md-select>
-  <md-input-container class="full-width title" color="accent">
-    <input mdInput placeholder="{{mode === 'create' ? 'Title (Facebook...)' : 'Title' }}" [(ngModel)]="keyObj.title">
-    <md-hint *ngIf="error.title !== ''" [ngStyle]="{'color': 'red'}" align="start">{{error.title}}</md-hint>
-  </md-input-container>
+    </mat-option>
+  </mat-select>
+  <mat-form-field class="full-width title" color="accent">
+    <input matInput placeholder="{{mode === 'create' ? 'Title (Facebook...)' : 'Title' }}" [(ngModel)]="keyObj.title">
+    <mat-hint *ngIf="error.title !== ''" [ngStyle]="{'color': 'red'}" align="start">{{error.title}}</mat-hint>
+  </mat-form-field>
   <div *ngIf="keyObj.type === 'Account'">
-    <md-input-container class="full-width" color="accent">
-      <input mdInput placeholder="Username" value="" [(ngModel)]="keyObj.user">
-      <md-hint *ngIf="error.user !== ''" [ngStyle]="{'color': 'red'}" align="start">{{error.user}}</md-hint>
-    </md-input-container>
+    <mat-form-field class="full-width" color="accent">
+      <input matInput placeholder="Username" value="" [(ngModel)]="keyObj.user">
+      <mat-hint *ngIf="error.user !== ''" [ngStyle]="{'color': 'red'}" align="start">{{error.user}}</mat-hint>
+    </mat-form-field>
     <span class="relative">
-      <md-input-container class="full-width" color="accent">
-        <input mdInput placeholder="Password" [(ngModel)]="keyObj.pass" type="{{hidePw ? 'password' : 'text'}}">
-        <md-hint *ngIf="error.pass !== ''" [ngStyle]="{'color': 'red'}" align="start">{{error.pass}}</md-hint>
-      </md-input-container>
-      <button md-icon-button disableRipple="true" (click)="hidePw = !hidePw" class="right">
-        <md-icon *ngIf="hidePw">visibility</md-icon>
-        <md-icon *ngIf="!hidePw">visibility_off</md-icon>
+      <mat-form-field class="full-width" color="accent">
+        <input matInput placeholder="Password" [(ngModel)]="keyObj.pass" type="{{hidePw ? 'password' : 'text'}}">
+        <mat-hint *ngIf="error.pass !== ''" [ngStyle]="{'color': 'red'}" align="start">{{error.pass}}</mat-hint>
+      </mat-form-field>
+      <button mat-icon-button disableRipple="true" (click)="hidePw = !hidePw" class="right">
+        <mat-icon *ngIf="hidePw">visibility</mat-icon>
+        <mat-icon *ngIf="!hidePw">visibility_off</mat-icon>
       </button>
     </span>
   </div>
   <div *ngIf="keyObj.type !== 'Account'">
-    <md-input-container class="full-width" color="accent">
-      <textarea mdInput placeholder="Text" [(ngModel)]="keyObj.text" maxlength="200" rows="4"></textarea>
-      <md-hint *ngIf="error.text !== ''" [ngStyle]="{'color': 'red'}" align="start">{{error.text}}</md-hint>
-    </md-input-container>
+    <mat-form-field class="full-width" color="accent">
+      <textarea matInput placeholder="Text" [(ngModel)]="keyObj.text" maxlength="200" rows="4"></textarea>
+      <mat-hint *ngIf="error.text !== ''" [ngStyle]="{'color': 'red'}" align="start">{{error.text}}</mat-hint>
+    </mat-form-field>
   </div>
-</md-dialog-content>
-<md-dialog-actions align="right">
-  <button md-raised-button md-dialog-close>Close</button>
-  <button md-raised-button (click)="save($event)" class="save-btn">Save</button>
-</md-dialog-actions>
+</mat-dialog-content>
+<mat-dialog-actions align="right">
+  <button mat-raised-button mat-dialog-close>Close</button>
+  <button mat-raised-button (click)="save($event)" class="save-btn">Save</button>
+</mat-dialog-actions>

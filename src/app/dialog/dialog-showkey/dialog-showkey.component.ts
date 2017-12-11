@@ -1,5 +1,5 @@
 import {Component, OnInit, Inject} from '@angular/core';
-import {MD_DIALOG_DATA} from '@angular/material';
+import {MAT_DIALOG_DATA} from '@angular/material';
 import {KeyObjModel} from '../../model/key.model';
 import {KeyService} from '../../service/key.service';
 
@@ -11,7 +11,7 @@ import {KeyService} from '../../service/key.service';
 export class DialogShowkeyComponent implements OnInit {
   keyObj: KeyObjModel = new KeyObjModel();
 
-  constructor(@Inject(MD_DIALOG_DATA) private data: KeyObjModel, private keyService: KeyService) { }
+  constructor(@Inject(MAT_DIALOG_DATA) private data: KeyObjModel, private keyService: KeyService) { }
 
   ngOnInit() {
     // deserialize keyObj

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthService} from '../service/auth.service';
-import {MdSnackBar, MdSnackBarConfig} from '@angular/material';
+import {MatSnackBar, MatSnackBarConfig} from '@angular/material';
 import {am_console} from '../app.util';
 import { AmConst } from '../util/am.const';
 
@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   masterkey = 'hello';
   failCount: number;
 
-  constructor(private router: Router, private authService: AuthService, private snackBar: MdSnackBar) {
+  constructor(private router: Router, private authService: AuthService, private snackBar: MatSnackBar) {
     am_console.log('LoginComponent Init / failCount is set to 0');
     this.failCount = 0;
   }

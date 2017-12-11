@@ -1,15 +1,15 @@
 <div>
   <div *ngIf="auth">
-    <button md-button color="accent" (click)="export()">
-      <md-icon>file_download</md-icon>
+    <button mat-button color="accent" (click)="export()">
+      <mat-icon>file_download</mat-icon>
       <span>Export</span>
     </button>
-    <button md-button color="accent" [mdMenuTriggerFor]="menu">
-      <md-icon>file_upload</md-icon>
+    <button mat-button color="accent" [matMenuTriggerFor]="menu">
+      <mat-icon>file_upload</mat-icon>
       <span>Import</span>
     </button>
-    <button md-button color="accent">
-      <md-icon>credit_card</md-icon>
+    <button mat-button color="accent">
+      <mat-icon>credit_card</mat-icon>
       <span>Donate</span>
     </button>
     <form id="importForm">
@@ -17,23 +17,23 @@
     </form>
   </div>
   <div (click)="navToggler.click()">
-    <button md-button color="accent">
-      <md-icon>info_outline</md-icon>
+    <button mat-button color="accent">
+      <mat-icon>info_outline</mat-icon>
       <span>more info</span>
     </button>
-    <button md-button color="accent" routerLink="/faq">
-      <md-icon>help_outline</md-icon>
+    <button mat-button color="accent" routerLink="/faq">
+      <mat-icon>help_outline</mat-icon>
       <span>FAQ</span>
     </button>
   </div>
 </div>
-<md-menu #menu="mdMenu" xPosition="before" [overlapTrigger]="false">
-  <button md-menu-item (click)="triggerImport()" color="accent">
-    <md-icon>insert_drive_file</md-icon>
+<mat-menu #menu="matMenu" xPosition="before" [overlapTrigger]="false">
+  <button mat-menu-item (click)="triggerImport()" color="accent">
+    <mat-icon>insert_drive_file</mat-icon>
     <span>Import from a file</span>
   </button>
-  <button md-menu-item (click)="openTextImportDialog()" color="accent">
-    <md-icon color="red">textsms</md-icon>
+  <button mat-menu-item (click)="openTextImportDialog()" color="accent">
+    <mat-icon color="red">textsms</mat-icon>
     <span>Import from a text</span>
   </button>
-</md-menu>
+</mat-menu>

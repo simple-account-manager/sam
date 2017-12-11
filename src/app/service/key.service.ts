@@ -1,6 +1,6 @@
 import {Injectable, EventEmitter, ViewChild} from '@angular/core';
 import {AuthService} from './auth.service';
-import {MdSnackBar, MdMenuTrigger, MdSnackBarConfig} from '@angular/material';
+import {MatSnackBar, MatMenuTrigger, MatSnackBarConfig} from '@angular/material';
 import {KeyObjModel} from '../model/key.model';
 import {CryptoService} from './crypto.service';
 import {am_console} from '../app.util';
@@ -15,9 +15,9 @@ export class KeyService {
 
   dataMapUpdated: EventEmitter<Map<number, KeyObjModel>> = new EventEmitter();
 
-  @ViewChild(MdMenuTrigger) trigger: MdMenuTrigger;
+  @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
 
-  constructor(private snackBar: MdSnackBar, private cryptoService: CryptoService) {}
+  constructor(private snackBar: MatSnackBar, private cryptoService: CryptoService) {}
 
   loadKeyFromLocalStorage() {
     const tmp = localStorage.getItem(this.KEY);

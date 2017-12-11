@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {MdDialogRef} from '@angular/material';
+import {MatDialogRef} from '@angular/material';
 import {am_console} from '../../app.util';
 import { AmConst } from '../../util/am.const';
 
@@ -13,7 +13,7 @@ export class DialogImportTextComponent implements OnInit {
   error = '';
   text = '';
 
-  constructor(public dialogRef: MdDialogRef<DialogImportTextComponent>) { }
+  constructor(public dialogRef: MatDialogRef<DialogImportTextComponent>) { }
 
   ngOnInit() {
   }
