@@ -6,13 +6,13 @@
   </mat-card-header>
   <mat-card-content>
     <p class="absolute">
-      <mat-form-field class="full-width">
+      <mat-form-field class="full-width" color="accent">
         <input matInput placeholder="Masterkey" [(ngModel)]="masterkey" type="{{hidePw ? 'password' : 'text'}}" (keyup.enter)="login()">
         <mat-hint *ngIf="errorMessage.length > 0" [ngStyle]="{'color': 'red'}" align="start">{{errorMessage}}</mat-hint>
       </mat-form-field>
       <button mat-icon-button disableRipple="true" (click)="hidePw = !hidePw" class="right">
-        <mat-icon *ngIf="hidePw">visibility</mat-icon>
-        <mat-icon *ngIf="!hidePw">visibility_off</mat-icon>
+        <mat-icon *ngIf="hidePw" color="accent">visibility</mat-icon>
+        <mat-icon *ngIf="!hidePw" color="accent">visibility_off</mat-icon>
       </button>
     </p>
   </mat-card-content>

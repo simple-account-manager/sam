@@ -6,7 +6,7 @@
       <mat-list-item *ngFor="let data of dataArray" (click)="openKey(data.created)" (classList)="mat-menu-item">
         {{data.title}}
         <button mat-icon-button [matMenuTriggerFor]="menu" (click)="openOption($event, data.created)">
-          <mat-icon>more_vert</mat-icon>
+          <mat-icon color="accent">more_vert</mat-icon>
         </button>
       </mat-list-item>
     </div>
@@ -14,11 +14,11 @@
 
 <mat-menu #menu="matMenu">
   <button mat-menu-item (click)="editData()">
-    <mat-icon>mode_edit</mat-icon>
+    <mat-icon color="accent">mode_edit</mat-icon>
     <span>Edit</span>
   </button>
   <button mat-menu-item (click)="deleteData()">
-    <mat-icon>delete</mat-icon>
+    <mat-icon color="accent">delete</mat-icon>
     <span>Delete</span>
   </button>
 </mat-menu>

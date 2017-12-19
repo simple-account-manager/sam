@@ -28,12 +28,12 @@
   </div>
 </div>
 <mat-menu #menu="matMenu" xPosition="before" [overlapTrigger]="false">
-  <button mat-menu-item (click)="triggerImport()" color="accent">
-    <mat-icon>insert_drive_file</mat-icon>
+  <button mat-menu-item (click)="triggerImport()">
+    <mat-icon color="accent">insert_drive_file</mat-icon>
     <span>Import from a file</span>
   </button>
-  <button mat-menu-item (click)="openTextImportDialog()" color="accent">
-    <mat-icon color="red">textsms</mat-icon>
+  <button mat-menu-item (click)="openTextImportDialog()">
+    <mat-icon color="accent">textsms</mat-icon>
     <span>Import from a text</span>
   </button>
 </mat-menu>
