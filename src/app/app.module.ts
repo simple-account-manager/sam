@@ -7,23 +7,22 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { KeylistComponent } from './keylist/keylist.component';
 import {RouterModule} from "@angular/router";
-import {routes} from "./app.routes";
-import {AuthService} from "./service/auth.service";
-import {KeyService} from "./service/key.service";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { routes } from "./app.routes";
+import { AuthService } from "./service/auth.service";
+import { KeyService } from "./service/key.service";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import {
   MatToolbarModule, MatCardModule, MatButtonModule, MatInputModule, MatIconModule, MatSnackBarModule,
-  MatListModule, MatDialogModule, MatMenuModule, MatTabsModule, MatSelectModule
+  MatListModule, MatDialogModule, MatMenuModule, MatTabsModule, MatSelectModule, MatExpansionModule
 } from "@angular/material";
 import { NavComponent } from './nav/nav.component';
-import {CryptoService} from "./service/crypto.service";
+import { CryptoService } from "./service/crypto.service";
 import { DialogShowkeyComponent } from './dialog/dialog-showkey/dialog-showkey.component';
 import { KeylistTabComponent } from './keylist-tab/keylist-tab.component';
 import { DialogCreatekeyComponent } from './dialog/dialog-createkey/dialog-createkey.component';
-import {ExportService} from "./service/export.service";
-import {ImportService} from "./service/import.service";
+import { ExportService } from "./service/export.service";
+import { ImportService } from "./service/import.service";
 import { FaqComponent } from './faq/faq.component';
-import { InfoLinkComponent } from './info-link/info-link.component';
 import { DialogImportTextComponent } from './dialog/dialog-import-text/dialog-import-text.component';
 
 @NgModule({
@@ -36,7 +35,6 @@ import { DialogImportTextComponent } from './dialog/dialog-import-text/dialog-im
     KeylistTabComponent,
     DialogCreatekeyComponent,
     FaqComponent,
-    InfoLinkComponent,
     DialogImportTextComponent
   ],
   imports: [
@@ -55,6 +53,7 @@ import { DialogImportTextComponent } from './dialog/dialog-import-text/dialog-im
     MatMenuModule,
     MatTabsModule,
     MatSelectModule,
+    MatExpansionModule,
     RouterModule.forRoot(routes)
   ],
   entryComponents: [

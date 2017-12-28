@@ -1,43 +1,9 @@
 <h2>FAQs</h2>
-<app-info-link [id]="'masterkey'" [linktext]="'What the hell is a masterkey?'">
-  Bla Bla..
-</app-info-link>
-<app-info-link [id]="'masterkey'" [linktext]="'What the hell is a masterkey?'">
-  Bla Bla..
-</app-info-link>
-<app-info-link [id]="'masterkey'" [linktext]="'What the hell is a masterkey?'">
-  Bla Bla..
-</app-info-link>
-<app-info-link [id]="'masterkey'" [linktext]="'What the hell is a masterkey?'">
-  Bla Bla..
-</app-info-link>
-<app-info-link [id]="'masterkey'" [linktext]="'What the hell is a masterkey?'">
-  Bla Bla..
-</app-info-link>
-<app-info-link [id]="'masterkey'" [linktext]="'What the hell is a masterkey? What the hell is a masterkey?'">
-  Bla Bla..
-</app-info-link>
-<app-info-link [id]="'masterkey'" [linktext]="'What the hell is a masterkey?'">
-  Bla Bla..
-</app-info-link>
-<app-info-link [id]="'masterkey'" [linktext]="'What the hell is a masterkey?'">
-  Bla Bla..
-</app-info-link>
-<app-info-link [id]="'masterkey'" [linktext]="'What the hell is a masterkey?'">
-  Bla Bla..
-</app-info-link>
-<app-info-link [id]="'masterkey'" [linktext]="'What the hell is a masterkey?'">
-  Bla Bla..
-</app-info-link>
-<app-info-link [id]="'masterkey'" [linktext]="'What the hell is a masterkey?'">
-  Bla Bla..
-</app-info-link>
-<app-info-link [id]="'masterkey1'" [linktext]="'What the hell is a masterkey?'">
-  Bla Bla..
-</app-info-link>
-<app-info-link [id]="'masterkey2'" [linktext]="'What the hell is a masterkey?'">
-  Bla Bla..
-</app-info-link>
-<app-info-link [id]="'masterkey3'" [linktext]="'What the hell is a masterkey?'">
-  Bla Bla..
-</app-info-link>
+<mat-expansion-panel *ngFor="let faq of faqs">
+  <mat-expansion-panel-header [collapsedHeight]="'auto'" [expandedHeight]="'auto'">
+    <mat-panel-title>
+      <strong>{{faq.q}}</strong>
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <p [innerHTML]="faq.a"></p>
+</mat-expansion-panel>

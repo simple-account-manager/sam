@@ -1,4 +1,4 @@
-
+@import sass-config
 body
   font-family: Roboto,"Helvetica Neue",sans-serif
   font-size: 16px
@@ -29,3 +29,9 @@ mat-dialog-container
 .snackWarning simple-snack-bar
   color: #F07E51
   font-weight: bold
+
+/* faq */
+.mat-expansion-indicator
+  transition: transform 0.15s ease-in-out
+  &::after
+    color: $accent

@@ -1,9 +1,0 @@
-<div>
-  <a id="{{id}}" mat-button color="accent" class="info" (click)="showDesc($event)">
-    {{linktext}}
-    <mat-icon>arrow_drop_down</mat-icon>
-  </a>
-  <div [class.hide]="!show" class="content">
-    <ng-content></ng-content>
-  </div>
-</div>

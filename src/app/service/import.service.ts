@@ -45,7 +45,7 @@ export class ImportService {
         }, 4000);
       }
     } catch (e) {
-      this.keyService.openSnackBarExtraClass(AmConst.import_error, 6000, ['snackError']);
+      this.keyService.openSnackBarExtraClass(AmConst.import_error, 12000, ['snackError']);
     }
     // form renders later! clean up form in order to reimport
     (document.getElementById('importForm') as HTMLFormElement).reset();

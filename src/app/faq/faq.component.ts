@@ -1,26 +1,29 @@
-import {Component, OnInit, AfterViewInit} from '@angular/core';
-import {am_console} from '../app.util';
+import { Component, OnInit } from '@angular/core';
+import { am_console } from '../app.util';
 
 @Component({
   selector: 'app-faq',
   templateUrl: './faq.component.html',
   styleUrls: ['./faq.component.sass']
 })
-export class FaqComponent implements OnInit, AfterViewInit {
+export class FaqComponent implements OnInit {
+
+  faqs = constFAQs;
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  ngAfterViewInit() {
-    const hash = location.hash;
-    if (hash !== '') {
-      location.hash = '';
-      am_console.log('has was' + hash);
-      document.getElementById(hash.substring(1)).click();
-      location.hash = hash;
-    }
-  }
-
 }
+
+const constFAQs = [
+  {
+    q: 'What the hell is a masterkey?',
+    a: 'Is the key to encrypt and decrypt your whole data in this applaction. So be <strong>very very</strong> careful with it!'
+  },
+  {
+    q: 'Which encryption standard is been used?',
+    a: 'AES'
+  },
+]
