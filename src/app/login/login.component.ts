@@ -1,8 +1,9 @@
+import { environment } from './../../environments/environment';
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
-import {AuthService} from '../service/auth.service';
-import {MatSnackBar, MatSnackBarConfig} from '@angular/material';
-import {am_console} from '../app.util';
+import { Router } from '@angular/router';
+import { AuthService } from '../service/auth.service';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
+import { am_console } from '../app.util';
 import { AmConst } from '../util/am.const';
 
 @Component({
@@ -14,12 +15,12 @@ export class LoginComponent implements OnInit {
 
   hidePw = true;
   errorMessage = '';
-  masterkey = 'hello';
-  failCount: number;
+  masterkey =  environment.production ? '' : 'hello';
+  failCount = 0;
+  isDev = !environment.production;
 
   constructor(private router: Router, private authService: AuthService, private snackBar: MatSnackBar) {
     am_console.log('LoginComponent Init / failCount is set to 0');
-    this.failCount = 0;
   }
 
   ngOnInit() {
@@ -60,6 +61,8 @@ export class LoginComponent implements OnInit {
   }
 
   clear() {
-    window.localStorage.clear();
+    if (!environment.production) {
+      window.localStorage.clear();
+    }
   }
 }
