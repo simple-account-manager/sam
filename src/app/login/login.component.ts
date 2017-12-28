@@ -36,6 +36,10 @@ export class LoginComponent implements OnInit {
       }
     }
   }
+  /** in order to realize the ripple effect @zorlu */
+  loginDelayed() {
+    setTimeout(() => this.login(), 300);
+  }
 
   validate(masterkey: string): string {
     if (masterkey.length === 0) {
