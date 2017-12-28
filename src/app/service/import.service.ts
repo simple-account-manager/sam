@@ -33,19 +33,19 @@ export class ImportService {
       });
       if (countAdd > 0) {
         this.keyService.saveKeyLocalStorage();
-        snackMsg = countAdd + AmConst.importSuccess;
+        snackMsg = countAdd + AmConst.import_success;
       } else {
-        snackMsg = AmConst.importNoImport;
+        snackMsg = AmConst.import_nothing_imported;
       }
 
       this.keyService.openSnackBar(snackMsg, 4000);
       if (countExists > 0) {
         setTimeout(() => {
-          this.keyService.openSnackBarExtraClass(countExists + AmConst.importItemsExists, 4000, ['snackWarning']);
+          this.keyService.openSnackBarExtraClass(countExists + AmConst.import_items_exists, 4000, ['snackWarning']);
         }, 4000);
       }
     } catch (e) {
-      this.keyService.openSnackBarExtraClass(AmConst.importError, 6000, ['snackError']);
+      this.keyService.openSnackBarExtraClass(AmConst.import_error, 6000, ['snackError']);
     }
     // form renders later! clean up form in order to reimport
     (document.getElementById('importForm') as HTMLFormElement).reset();

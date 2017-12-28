@@ -39,9 +39,9 @@ export class LoginComponent implements OnInit {
 
   validate(masterkey: string): string {
     if (masterkey.length === 0) {
-      return AmConst.validateMasterkey;
+      return AmConst.validate_masterkey;
     } else if (masterkey.length < 5) {
-      return AmConst.validate5long;
+      return AmConst.validate_5_long;
     } else {
       return '';
     }
@@ -52,10 +52,10 @@ export class LoginComponent implements OnInit {
    */
   handleLoginError() {
     if (this.failCount === 2) {
-      this.snackBar.open(AmConst.snackResetAccount, AmConst.snackYES, {duration: 3000})
+      this.snackBar.open(AmConst.snack_reset_account, AmConst.snack_YES, {duration: 3000})
         .onAction().subscribe(() => localStorage.clear());
     } else {
-      this.snackBar.open(AmConst.snackLoginFail, null, {duration: 2000});
+      this.snackBar.open(AmConst.snack_login_fail, null, {duration: 2000});
       this.failCount++;
     }
   }

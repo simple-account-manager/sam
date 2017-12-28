@@ -1,35 +1,35 @@
 export class AmConst {
   private static welcome = ['Hey :)'];
   // public
-  static firstlogin = 'Please notice your masterkey for relogin!';
+  static first_login = 'Please notice your masterkey for relogin!';
 
   // delete key
   static deleted = 'deleted';
   static undo = 'Undo';
 
   // export
-  static exportFilePrefix = 'Please copy the whole text and save it! ****'; // **** are important
-  static exportMsg = 'export'
+  static export_file_prefix = 'Please copy the whole text and save it! ****'; // **** are important
+  static export_msg = 'export'
 
   // import
-  static importSuccess = ' items imported successfully ;)';
-  static importNoImport = 'No item imported'!;
-  static importError = 'Import error! File is broken or you may used other masterkey';
-  static importItemsExists = ' items exist already in the list';
+  static import_success = ' items imported successfully ;)';
+  static import_nothing_imported = 'No item imported'!;
+  static import_error = 'Import error! File is broken or you may used other masterkey';
+  static import_items_exists = ' items exist already in the list';
 
   // Snackbar
-  static snackResetAccount = 'Do you want reset your account?';
-  static snackLoginFail = 'Login failed!';
-  static snackYES = 'YES!';
+  static snack_reset_account = 'Do you want reset your account?';
+  static snack_login_fail = 'Login failed!';
+  static snack_YES = 'YES!';
 
   // validate
-  static validateMasterkey =  'Masterkey is required';
-  static validate5long = 'Input has to be at least 5 characters long';
-  static validateRequired = 'this is required!';
-  static validateTitleRequired = 'Title is required';
-  static validateUserRequired = 'Username is required';
-  static validatePassRequired = 'Password is required';
-  static validateTextRequired = 'Text is required';
+  static validate_masterkey =  'Masterkey is required';
+  static validate_5_long = 'Input has to be at least 5 characters long';
+  static validate_required = 'this is required!';
+  static validate_title_required = 'Title is required';
+  static validate_user_required = 'Username is required';
+  static validate_pass_required = 'Password is required';
+  static validate_text_required = 'Text is required';
 
 
   // changing text

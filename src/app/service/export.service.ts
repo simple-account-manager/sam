@@ -12,13 +12,13 @@ export class ExportService {
     const keyObj = localStorage.getItem(this.keyService.KEY);
     am_console.log('--> Export this: ', keyObj);
     const a = document.createElement('a')
-    a.setAttribute('href', 'data:text/plain;charset=utf-8,' + AmConst.exportFilePrefix + keyObj);
+    a.setAttribute('href', 'data:text/plain;charset=utf-8,' + AmConst.export_file_prefix + keyObj);
     a.setAttribute('download', 'AM-' + this.genarateDateStr() + '.am');
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
 
-    this.keyService.openSnackBar(AmConst.exportMsg, 3000);
+    this.keyService.openSnackBar(AmConst.export_msg, 3000);
   }
 
   private genarateDateStr() {

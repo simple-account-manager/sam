@@ -22,7 +22,7 @@ export class DialogImportTextComponent implements OnInit {
     am_console.log('--> copied Text' + this.text);
     if (this.text === '') {
       event.stopPropagation();
-      this.error = AmConst.validateRequired;
+      this.error = AmConst.validate_required;
     } else {
       this.dialogRef.close(this.text);
     }

@@ -55,7 +55,7 @@ export class AuthService implements CanActivate {
     if (loginPass === null) {
       // the first login
       localStorage.setItem(this.theBoss, this.cryptoService.encrypt(masterKey, this.theBoss));
-      this.openSnackBar(AmConst.firstlogin, null, 6000);
+      this.openSnackBar(AmConst.first_login, null, 6000);
       this.keyService.setMasterkey(masterKey);
       return true;
     } else {

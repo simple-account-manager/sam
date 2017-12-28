@@ -72,13 +72,13 @@ export class DialogCreatekeyComponent implements OnInit {
   }
 
   validateData(keyObj: KeyObjModel) {
-    this.error.title = this.isEmpty(keyObj.title) ? AmConst.validateTitleRequired : '';
+    this.error.title = this.isEmpty(keyObj.title) ? AmConst.validate_title_required : '';
     if (keyObj.type === 'Account') {
-      this.error.user = this.isEmpty(keyObj.user) ? AmConst.validateUserRequired : '';
-      this.error.pass = this.isEmpty(keyObj.pass) ? AmConst.validatePassRequired : '';
+      this.error.user = this.isEmpty(keyObj.user) ? AmConst.validate_user_required : '';
+      this.error.pass = this.isEmpty(keyObj.pass) ? AmConst.validate_pass_required : '';
       this.error.text = '';
     } else {
-      this.error.text = this.isEmpty(keyObj.text) ? AmConst.validateTextRequired : '';
+      this.error.text = this.isEmpty(keyObj.text) ? AmConst.validate_text_required : '';
       this.error.user = '';
       this.error.pass = '';
     }
