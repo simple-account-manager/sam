@@ -8,11 +8,41 @@ import { am_console } from '../app.util';
 })
 export class FaqComponent implements OnInit {
 
-  faqs = constFAQs;
+  faqs = [];
+  filteredFaqs = [];
+  input: string;
+  private searchStr = '';
 
-  constructor() { }
+  constructor() { 
+    this.faqs = constFAQs.map((faq) => {
+      faq['q_low'] = faq.q.toLowerCase();
+      faq['a_low'] = faq.a.toLowerCase();
+      return faq;
+    })
+    this.filteredFaqs = this.faqs;
+  }
 
   ngOnInit() {
+  }
+
+  search() {
+    if (this.input.length > 2) {
+      const input_low = this.input.toLowerCase();
+      if (input_low !== this.searchStr) {
+        // search only if the input has changed
+        this.searchStr = input_low;
+        this.searchImpl();
+      }
+    } else {
+      this.searchStr = '';
+      this.filteredFaqs = this.faqs;
+    }
+  }
+  
+  searchImpl() {
+    this.filteredFaqs = this.faqs.filter((faq) => {
+      return faq.q_low.includes(this.searchStr) || faq.a_low.includes(this.searchStr);
+    })
   }
 
 }
