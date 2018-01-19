@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
       }
     }
   }
-  /** in order to realize the ripple effect @zorlu */
+  /** in order to make the ripple effect visual @zorlu */
   loginDelayed() {
     setTimeout(() => this.login(), 300);
   }

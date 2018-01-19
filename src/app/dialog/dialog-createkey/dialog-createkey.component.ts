@@ -38,15 +38,6 @@ export class DialogCreatekeyComponent implements OnInit {
       this.mode = 'edit';
     }
   }
-  /*
-  checkOnChange(keyObj) {
-    am_console.log('checkOnChange: ' + keyObj.title);
-    if (this.keyService.getDataMap().has(keyObj.title)) {
-      this.error.title = 'Title exists already';
-    } else {
-      this.error.title = '';
-    }
-  }*/
 
   save(event) {
     this.validateData(this.keyObj);
@@ -57,8 +48,11 @@ export class DialogCreatekeyComponent implements OnInit {
       event.stopPropagation();
     } else {
       this.cleanUpData(this.keyObj);
+      let isNewObj = typeof this.keyObj.created === 'undefined';
       this.keyService.saveKeyToMap(this.keyObj);
       this.dialogRef.close();
+      // show save|update msg
+      this.keyService.openSnackBar(`${this.keyObj.type} ${isNewObj ? AmConst.saved: AmConst.updated}`, 2000);
     }
   }
 

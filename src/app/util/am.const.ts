@@ -4,7 +4,7 @@ export class AmConst {
   static first_login = 'Please notice your masterkey for relogin!';
 
   // delete key
-  static deleted = 'deleted';
+  static deleted = ' deleted';
   static undo = 'Undo';
 
   // export
@@ -31,6 +31,9 @@ export class AmConst {
   static validate_pass_required = 'Password is required';
   static validate_text_required = 'Text is required';
 
+  // save
+  static saved = ' saved';
+  static updated = ' updated'
 
   // changing text
   static get welcomeText() {
