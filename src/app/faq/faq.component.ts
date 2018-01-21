@@ -10,10 +10,11 @@ export class FaqComponent implements OnInit {
 
   faqs = [];
   filteredFaqs = [];
-  input: string;
+  input = '';
   private searchStr = '';
 
   constructor() { 
+    // TODO ignore html tags
     this.faqs = constFAQs.map((faq) => {
       faq['q_low'] = faq.q.toLowerCase();
       faq['a_low'] = faq.a.toLowerCase();
