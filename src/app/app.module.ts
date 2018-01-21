@@ -24,6 +24,7 @@ import { ExportService } from "./service/export.service";
 import { ImportService } from "./service/import.service";
 import { FaqComponent } from './faq/faq.component';
 import { DialogImportTextComponent } from './dialog/dialog-import-text/dialog-import-text.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { DialogImportTextComponent } from './dialog/dialog-import-text/dialog-im
     KeylistTabComponent,
     DialogCreatekeyComponent,
     FaqComponent,
-    DialogImportTextComponent
+    DialogImportTextComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
