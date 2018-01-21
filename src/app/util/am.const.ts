@@ -1,5 +1,5 @@
 export class AmConst {
-  private static welcome = ['Hey :)'];
+  private static welcome = ['Hey :)', 'Good to see you agian!', 'Hi, please remember to backup.',];
   // public
   static first_login = 'Please notice your masterkey for relogin!';
 
@@ -37,6 +37,12 @@ export class AmConst {
 
   // changing text
   static get welcomeText() {
-    return this.welcome[0];
+    return this.welcome[this.getRandom(0, this.welcome.length)];
+  }
+  /**
+   * Returns a random number between min (inclusive) and max (exclusive)
+   */
+  static getRandom(min: number, max: number) {
+    return Math.floor(Math.random() * (min - max) + max);
   }
 }
