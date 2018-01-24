@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {MatDialogRef} from '@angular/material';
-import {am_console} from '../../app.util';
+import { MatDialogRef } from '@angular/material';
+import { am_console } from '../../app.util';
 import { AmConst } from '../../util/am.const';
 
 @Component({

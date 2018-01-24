@@ -1,9 +1,10 @@
-import {Component, OnInit, Inject} from '@angular/core';
-import {KeyObjModel} from '../../model/key.model';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
-import {KeyService} from '../../service/key.service';
-import {am_console} from '../../app.util';
+import { Component, OnInit, Inject } from '@angular/core';
+import { KeyObjModel } from '../../model/key.model';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { KeyService } from '../../service/key.service';
+import { am_console } from '../../app.util';
 import { AmConst } from '../../util/am.const';
+import { SnackbarService } from 'app/service/snackbar.service';
 
 @Component({
   selector: 'app-dialog-createkey',
@@ -21,7 +22,8 @@ export class DialogCreatekeyComponent implements OnInit {
 
   constructor(@Inject(MAT_DIALOG_DATA) private data: KeyObjModel,
               public dialogRef: MatDialogRef<DialogCreatekeyComponent>,
-              private keyService: KeyService
+              private keyService: KeyService,
+              private snackbarService: SnackbarService
   ) { }
 
   ngOnInit() {
@@ -52,7 +54,7 @@ export class DialogCreatekeyComponent implements OnInit {
       this.keyService.saveKeyToMap(this.keyObj);
       this.dialogRef.close();
       // show save|update msg
-      this.keyService.openSnackBar(`${this.keyObj.type} ${isNewObj ? AmConst.saved: AmConst.updated}`, 2000);
+      this.snackbarService.openSnackBar(`${this.keyObj.type} ${isNewObj ? AmConst.saved: AmConst.updated}`, 2000);
     }
   }
 

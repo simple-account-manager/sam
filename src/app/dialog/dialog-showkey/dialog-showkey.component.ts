@@ -1,7 +1,7 @@
-import {Component, OnInit, Inject} from '@angular/core';
-import {MAT_DIALOG_DATA} from '@angular/material';
-import {KeyObjModel} from '../../model/key.model';
-import {KeyService} from '../../service/key.service';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material';
+import { KeyObjModel } from '../../model/key.model';
+import { KeyService } from '../../service/key.service';
 
 @Component({
   selector: 'app-dialog-showkey',

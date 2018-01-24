@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import {CanActivate, Router} from '@angular/router';
-import {MatSnackBar} from '@angular/material';
-import {CryptoService} from './crypto.service';
-import {KeyService} from './key.service';
-import {am_console} from '../app.util';
+import { CanActivate, Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
+import { CryptoService } from './crypto.service';
+import { KeyService } from './key.service';
+import { am_console } from '../app.util';
 import { AmConst } from '../util/am.const';
 
 @Injectable()

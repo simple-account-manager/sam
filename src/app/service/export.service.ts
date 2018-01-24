@@ -1,12 +1,13 @@
+import { SnackbarService } from './snackbar.service';
 import { Injectable } from '@angular/core';
-import {KeyService} from './key.service';
+import { KeyService } from './key.service';
 import { am_console } from '../app.util';
 import { AmConst } from '../util/am.const';
 
 @Injectable()
 export class ExportService {
 
-  constructor(private keyService: KeyService) { }
+  constructor(private keyService: KeyService, private snackbarService: SnackbarService) { }
 
   exportImpl() {
     const keyObj = localStorage.getItem(this.keyService.KEY);
@@ -18,7 +19,7 @@ export class ExportService {
     a.click();
     document.body.removeChild(a);
 
-    this.keyService.openSnackBar(AmConst.export_msg, 3000);
+    this.snackbarService.openSnackBar(AmConst.export_msg, 3000);
   }
 
   private genarateDateStr() {

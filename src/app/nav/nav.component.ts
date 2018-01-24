@@ -1,12 +1,12 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {ExportService} from '../service/export.service';
-import {ImportService} from '../service/import.service';
-import {KeyService} from '../service/key.service';
-import {CryptoService} from '../service/crypto.service';
-import {KeyObjModel} from '../model/key.model';
-import {MatDialog} from '@angular/material';
-import {DialogImportTextComponent} from '../dialog/dialog-import-text/dialog-import-text.component';
-import {am_console} from '../app.util';
+import { Component, OnInit, Input } from '@angular/core';
+import { ExportService } from '../service/export.service';
+import { ImportService } from '../service/import.service';
+import { KeyService } from '../service/key.service';
+import { CryptoService } from '../service/crypto.service';
+import { KeyObjModel } from '../model/key.model';
+import { MatDialog } from '@angular/material';
+import { DialogImportTextComponent } from '../dialog/dialog-import-text/dialog-import-text.component';
+import { am_console } from '../app.util';
 
 @Component({
   selector: 'app-nav',

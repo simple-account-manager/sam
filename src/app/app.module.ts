@@ -25,6 +25,7 @@ import { ImportService } from "./service/import.service";
 import { FaqComponent } from './faq/faq.component';
 import { DialogImportTextComponent } from './dialog/dialog-import-text/dialog-import-text.component';
 import { AboutComponent } from './about/about.component';
+import { SnackbarService } from 'app/service/snackbar.service';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,7 @@ import { AboutComponent } from './about/about.component';
     DialogCreatekeyComponent,
     DialogImportTextComponent
   ],
-  providers: [AuthService, KeyService, CryptoService, ExportService, ImportService],
+  providers: [AuthService, KeyService, CryptoService, ExportService, ImportService, SnackbarService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

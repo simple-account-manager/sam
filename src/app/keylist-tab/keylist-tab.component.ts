@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {MatDialog, MatTabChangeEvent} from '@angular/material';
-import {DialogCreatekeyComponent} from '../dialog/dialog-createkey/dialog-createkey.component';
+import { MatDialog, MatTabChangeEvent } from '@angular/material';
+import { DialogCreatekeyComponent } from '../dialog/dialog-createkey/dialog-createkey.component';
 
 @Component({
   selector: 'app-keylist-tab',

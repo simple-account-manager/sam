@@ -1,11 +1,11 @@
-import {Component, OnInit, ViewChild, Input, ChangeDetectionStrategy} from '@angular/core';
-import {MatDialog, MatDialogConfig, MatMenuTrigger} from '@angular/material';
-import {DialogShowkeyComponent} from '../dialog/dialog-showkey/dialog-showkey.component';
-import {KeyObjModel} from '../model/key.model';
-import {KeyService} from '../service/key.service';
-import {Event} from '@angular/router';
-import {DialogCreatekeyComponent} from '../dialog/dialog-createkey/dialog-createkey.component';
-import {am_console} from '../app.util';
+import { Component, OnInit, ViewChild, Input, ChangeDetectionStrategy } from '@angular/core';
+import { MatDialog, MatDialogConfig, MatMenuTrigger } from '@angular/material';
+import { DialogShowkeyComponent } from '../dialog/dialog-showkey/dialog-showkey.component';
+import { KeyObjModel } from '../model/key.model';
+import { KeyService } from '../service/key.service';
+import { Event } from '@angular/router';
+import { DialogCreatekeyComponent } from '../dialog/dialog-createkey/dialog-createkey.component';
+import { am_console } from '../app.util';
 
 @Component({
   selector: 'app-keylist',

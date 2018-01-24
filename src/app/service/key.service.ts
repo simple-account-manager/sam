@@ -1,9 +1,9 @@
-import {Injectable, EventEmitter, ViewChild} from '@angular/core';
-import {AuthService} from './auth.service';
-import {MatSnackBar, MatMenuTrigger, MatSnackBarConfig} from '@angular/material';
-import {KeyObjModel} from '../model/key.model';
-import {CryptoService} from './crypto.service';
-import {am_console} from '../app.util';
+import { Injectable, EventEmitter, ViewChild } from '@angular/core';
+import { AuthService } from './auth.service';
+import { MatSnackBar, MatMenuTrigger, MatSnackBarConfig } from '@angular/material';
+import { KeyObjModel } from '../model/key.model';
+import { CryptoService } from './crypto.service';
+import { am_console } from '../app.util';
 import { AmConst } from '../util/am.const';
 
 @Injectable()
@@ -100,13 +100,6 @@ export class KeyService {
     } else {
       keyObj.text = this.cryptoService.decrypt(this.masterKey + keyObj.created, keyObj.text);
     }
-  }
-
-  openSnackBar(msg: string, duration: number) {
-    this.snackBar.open(msg, null, {duration});
-  }
-  openSnackBarExtraClass(msg: string, duration: number, extraClasses: string[]) {
-    this.snackBar.open(msg, null, {duration, extraClasses});
   }
 
   openSnackBarUndo(deletedData: KeyObjModel) {

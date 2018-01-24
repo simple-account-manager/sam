@@ -1,13 +1,14 @@
+import { SnackbarService } from './snackbar.service';
 import { Injectable } from '@angular/core';
-import {KeyService} from './key.service';
-import {KeyObjModel} from '../model/key.model';
-import {am_console} from '../app.util';
+import { KeyService } from './key.service';
+import { KeyObjModel } from '../model/key.model';
+import { am_console } from '../app.util';
 import { AmConst } from '../util/am.const';
 
 @Injectable()
 export class ImportService {
 
-  constructor(private keyService: KeyService) { }
+  constructor(private keyService: KeyService, private snackbarService: SnackbarService) { }
 
   mergeImportedKeys(importStr: string) {
     try {
@@ -38,14 +39,14 @@ export class ImportService {
         snackMsg = AmConst.import_nothing_imported;
       }
 
-      this.keyService.openSnackBar(snackMsg, 4000);
+      this.snackbarService.openSnackBar(snackMsg, 4000);
       if (countExists > 0) {
         setTimeout(() => {
-          this.keyService.openSnackBarExtraClass(countExists + AmConst.import_items_exists, 4000, ['snackWarning']);
+          this.snackbarService.openSnackBarExtraClass(countExists + AmConst.import_items_exists, 4000, ['snackWarning']);
         }, 4000);
       }
     } catch (e) {
-      this.keyService.openSnackBarExtraClass(AmConst.import_error, 12000, ['snackError']);
+      this.snackbarService.openSnackBarExtraClass(AmConst.import_error, 12000, ['snackError']);
     }
     // form renders later! clean up form in order to reimport
     (document.getElementById('importForm') as HTMLFormElement).reset();
