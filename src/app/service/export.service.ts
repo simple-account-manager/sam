@@ -14,7 +14,7 @@ export class ExportService {
     am_console.log('--> Export this: ', keyObj);
     const a = document.createElement('a')
     a.setAttribute('href', 'data:text/plain;charset=utf-8,' + AmConst.export_file_prefix + keyObj);
-    a.setAttribute('download', 'AM-' + this.genarateDateStr() + '.am');
+    a.setAttribute('download', 'AM-' + this.genarateDateStr() + '.sam');
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -24,11 +24,11 @@ export class ExportService {
 
   private genarateDateStr() {
     const now = new Date()
-    return now.getFullYear() +
-      this.format(now.getMonth() + 1) +
-      this.format(now.getDate()) +
-      this.format(now.getHours()) +
-      this.format(now.getMinutes()) +
+    return now.getFullYear() + '-' +
+      this.format(now.getMonth() + 1) + '-' +
+      this.format(now.getDate()) + '-' +
+      this.format(now.getHours()) + '-' + 
+      this.format(now.getMinutes()) + '-' +
       this.format(now.getSeconds())
   }
 
