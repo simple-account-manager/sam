@@ -1,7 +1,8 @@
 export class AmConst {
   private static welcome = ['Hey :)', 'Good to see you agian!', 'Hi, please remember to backup.',];
-  // public
   static first_login = 'Please notice your masterkey for relogin!';
+
+  static sam_version = '1.0.0'
 
   // delete key
   static deleted = ' deleted';

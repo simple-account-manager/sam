@@ -1,60 +1,54 @@
-import { Injectable, EventEmitter, ViewChild } from '@angular/core';
-import { AuthService } from './auth.service';
-import { MatSnackBar, MatMenuTrigger, MatSnackBarConfig } from '@angular/material';
+import { Injectable, EventEmitter } from '@angular/core';
+import { MatSnackBar } from '@angular/material';
 import { KeyObjModel } from '../model/key.model';
 import { CryptoService } from './crypto.service';
 import { am_console } from '../app.util';
 import { AmConst } from '../util/am.const';
+import { SamModel } from 'app/model/sam.model';
 
 @Injectable()
 export class KeyService {
 
   KEY = 'dataObj';
-  private dataMap = new Map<number, KeyObjModel>();
+  private _data: SamModel;
+  // private dataMap = new Map<number, KeyObjModel>();
   private masterKey: string;
 
   dataMapUpdated: EventEmitter<Map<number, KeyObjModel>> = new EventEmitter();
 
-  @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
+  constructor(private snackBar: MatSnackBar, private cryptoService: CryptoService) {
+    this._data = new SamModel();
+  }
 
-  constructor(private snackBar: MatSnackBar, private cryptoService: CryptoService) {}
-
-  loadKeyFromLocalStorage() {
+  public loadKeyFromLocalStorage() {
     const tmp = localStorage.getItem(this.KEY);
+    am_console.log('--> data from localstorage: ' + tmp);
     if (tmp !== null) {
-      this.dataMap = this.generateMapFromEncryped(tmp);
-      am_console.log('Load Key', this.dataMap);
+      this._data = this.generateObjFromEncryped(tmp);
+      am_console.log('Load Key', this._data);
     }
   }
-
-  generateMapFromEncryped(encrypedStr: string): Map<number, KeyObjModel> {
+  /** called also by import */
+  public generateObjFromEncryped(encrypedStr: string): SamModel {
     const jsonStr = this.cryptoService.decrypt(this.masterKey, encrypedStr);
-    return new Map<number, KeyObjModel>(JSON.parse(jsonStr));
+    let tmpData = JSON.parse(jsonStr) as SamModel;
+    tmpData.mapData = new Map<number, KeyObjModel>(JSON.parse(tmpData.encryptedData));
+    tmpData.encryptedData = '';
+    return tmpData;
   }
-
-  setMasterkey(masterKey: string) {
+  /** authentication was successful */
+  public setMasterkey(masterKey: string) {
     this.masterKey = masterKey;
   }
 
-  saveKeyLocalStorage(): void {
-    // this.testKey();
-    const encryptedMap = this.cryptoService.encrypt(this.masterKey, JSON.stringify(Array.from(this.dataMap)));
+  /** called also by import */
+  public saveKeyLocalStorage(): void {
+    const encryptedMap = this.cryptoService.encrypt(this.masterKey, JSON.stringify(this.genarateSaveObj()));
     localStorage.setItem(this.KEY, encryptedMap);
     this.triggerUpdate();
   }
 
-  testKey() {
-    for (let i = 0; i < 10; i++) {
-      const tmp = new KeyObjModel();
-      tmp.type = 'Account';
-      tmp.title = i + '';
-      tmp.user = i + '';
-      tmp.pass = i + '';
-      this.dataMap.set(i, tmp);
-    }
-  }
-
-  saveKeyToMap(data: KeyObjModel) {
+  public saveKeyToMap(data: KeyObjModel) {
     am_console.log('Save keyObj to Map: ', data);
     // prepare data to save
     if (typeof data.created === 'undefined') {
@@ -63,27 +57,48 @@ export class KeyService {
     // encrypt data
     this.encryptKeyObj(data);
 
-    this.dataMap.set(data.created, data);
+    this._data.mapData.set(data.created, data);
     this.saveKeyLocalStorage();
   }
 
-  delete(id: number) {
-    const data = this.dataMap.get(id);
+  public delete(id: number) {
+    const data = this._data.mapData.get(id);
     if (typeof data !== 'undefined') {
-      this.dataMap.delete(id);
+      this._data.mapData.delete(id);
       this.saveKeyLocalStorage();
       this.openSnackBarUndo(data);
     }
   }
 
-  triggerUpdate() {
-    this.dataMapUpdated.emit(this.dataMap);
+  public getDataMap() {
+    return this._data.mapData;
   }
 
-  getDataMap() {
-    return this.dataMap;
+  /** decrypt for display */
+  public decryptKeyObj(keyObj: KeyObjModel) {
+    if (keyObj.type === 'Account') {
+      keyObj.user = this.cryptoService.decrypt(this.masterKey + keyObj.created, keyObj.user);
+      keyObj.pass = this.cryptoService.decrypt(this.masterKey + keyObj.created, keyObj.pass);
+    } else {
+      keyObj.text = this.cryptoService.decrypt(this.masterKey + keyObj.created, keyObj.text);
+    }
   }
 
+  /** tell the list view that the map of key changed */
+  private triggerUpdate() {
+    this.dataMapUpdated.emit(this._data.mapData);
+  }
+
+  /** generates Obj for save */
+  private genarateSaveObj(): SamModel{
+    let tmpObj = {} as SamModel;
+    tmpObj.loginCount = this._data.loginCount;
+    tmpObj.version = AmConst.sam_version;
+    tmpObj.encryptedData = JSON.stringify(Array.from(this._data.mapData));
+    return tmpObj
+  }
+  
+  /** encrypt important data twice */
   private encryptKeyObj(keyObj: KeyObjModel) {
     if (keyObj.type === 'Account') {
       keyObj.user = this.cryptoService.encrypt(this.masterKey + keyObj.created, keyObj.user);
@@ -93,19 +108,22 @@ export class KeyService {
     }
   }
 
-  decryptKeyObj(keyObj: KeyObjModel) {
-    if (keyObj.type === 'Account') {
-      keyObj.user = this.cryptoService.decrypt(this.masterKey + keyObj.created, keyObj.user);
-      keyObj.pass = this.cryptoService.decrypt(this.masterKey + keyObj.created, keyObj.pass);
-    } else {
-      keyObj.text = this.cryptoService.decrypt(this.masterKey + keyObj.created, keyObj.text);
-    }
-  }
-
-  openSnackBarUndo(deletedData: KeyObjModel) {
+  private openSnackBarUndo(deletedData: KeyObjModel) {
     this.snackBar.open(deletedData.type + AmConst.deleted, AmConst.undo, {duration: 200000}).onAction().subscribe(() => {
-      this.dataMap.set(deletedData.created, deletedData);
+      this._data.mapData.set(deletedData.created, deletedData);
       this.saveKeyLocalStorage();
     });
+  }
+
+  // test
+  testKey() {
+    for (let i = 0; i < 10; i++) {
+      const tmp = new KeyObjModel();
+      tmp.type = 'Account';
+      tmp.title = i + '';
+      tmp.user = i + '';
+      tmp.pass = i + '';
+      this._data.mapData.set(i, tmp);
+    }
   }
 }

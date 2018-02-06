@@ -7,43 +7,43 @@ import { AmConst } from '../util/am.const';
 
 @Injectable()
 export class ImportService {
-
+  
   constructor(private keyService: KeyService, private snackbarService: SnackbarService) { }
-
+  
   mergeImportedKeys(importStr: string) {
+    const display_msg_duration = 4000;
+
     try {
-      am_console.log('--> Imported String: ', importStr);
       // prepare/parse importStr
       importStr = this.extractEncryptedStr(importStr);
-      am_console.log('2--> Imported String: ', importStr);
 
-      const importMap = this.keyService.generateMapFromEncryped(importStr);
-      const keyMap = this.keyService.getDataMap();
+      const importObj = this.keyService.generateObjFromEncryped(importStr);
+      const dataMap = this.keyService.getDataMap();
 
       let countAdd = 0;
       let countExists = 0;
-      let snackMsg = '';
 
-      importMap.forEach((value: KeyObjModel, id: number) => {
-        if (!keyMap.has(id)) {
-          keyMap.set(id, value);
+      importObj.mapData.forEach((value: KeyObjModel, key: number) => {
+        if (!dataMap.has(key)) {
+          dataMap.set(key, value);
           countAdd++;
         } else {
           countExists++;
         }
       });
-      if (countAdd > 0) {
-        this.keyService.saveKeyLocalStorage();
-        snackMsg = countAdd + AmConst.import_success;
+
+      if (countAdd === 0) {
+        this.snackbarService.openSnackBar(AmConst.import_nothing_imported, display_msg_duration);
       } else {
-        snackMsg = AmConst.import_nothing_imported;
+        // some items are added to the map > save it!
+        this.keyService.saveKeyLocalStorage();
+        this.snackbarService.openSnackBar(countAdd + AmConst.import_success, display_msg_duration);
       }
 
-      this.snackbarService.openSnackBar(snackMsg, 4000);
       if (countExists > 0) {
         setTimeout(() => {
-          this.snackbarService.openSnackBarExtraClass(countExists + AmConst.import_items_exists, 4000, ['snackWarning']);
-        }, 4000);
+          this.snackbarService.openSnackBarExtraClass(countExists + AmConst.import_items_exists, display_msg_duration, ['snackWarning']);
+        }, display_msg_duration);
       }
     } catch (e) {
       this.snackbarService.openSnackBarExtraClass(AmConst.import_error, 12000, ['snackError']);
