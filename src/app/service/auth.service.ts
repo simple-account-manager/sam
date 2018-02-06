@@ -9,8 +9,8 @@ import { AmConst } from '../util/am.const';
 @Injectable()
 export class AuthService implements CanActivate {
 
-  private masterkey = '';
   private theBoss = 'IamTheBossBitches';
+  private _isAuthenticated = false;
 
   constructor(private router: Router,
               private cryptoService: CryptoService,
@@ -20,12 +20,8 @@ export class AuthService implements CanActivate {
   }
 
   login(masterkey: string): boolean {
-    if (this.checkMasterKey(masterkey)) {
-      this.masterkey = masterkey;
-      return true;
-    } else {
-      return false;
-    }
+    this._isAuthenticated = this.checkMasterKey(masterkey);
+    return this._isAuthenticated;
   }
 
   canActivate(route) {
@@ -39,15 +35,12 @@ export class AuthService implements CanActivate {
   }
 
   isAuthenticated(): boolean {
-    if (this.masterkey === '') {
-      return false;
-    } else {
-      return true;
-    }
+    return this._isAuthenticated;
   }
-
+  
+  // TODO implement
   logout(): void {
-    this.masterkey = '';
+    
   }
 
   checkMasterKey(masterKey: string): boolean {
@@ -71,10 +64,6 @@ export class AuthService implements CanActivate {
         return false;
       }
     }
-  }
-
-  getMasterkey(): string {
-    return this.masterkey;
   }
 
   openSnackBar(msg: string, action: string, duration: number) {

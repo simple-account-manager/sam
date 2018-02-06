@@ -9,10 +9,9 @@ import { SamModel } from 'app/model/sam.model';
 @Injectable()
 export class KeyService {
 
-  KEY = 'dataObj';
+  public KEY = 'dataObj';
   private _data: SamModel;
-  // private dataMap = new Map<number, KeyObjModel>();
-  private masterKey: string;
+  private _masterKey: string;
 
   dataMapUpdated: EventEmitter<Map<number, KeyObjModel>> = new EventEmitter();
 
@@ -22,7 +21,6 @@ export class KeyService {
 
   public loadKeyFromLocalStorage() {
     const tmp = localStorage.getItem(this.KEY);
-    am_console.log('--> data from localstorage: ' + tmp);
     if (tmp !== null) {
       this._data = this.generateObjFromEncryped(tmp);
       am_console.log('Load Key', this._data);
@@ -30,7 +28,7 @@ export class KeyService {
   }
   /** called also by import */
   public generateObjFromEncryped(encrypedStr: string): SamModel {
-    const jsonStr = this.cryptoService.decrypt(this.masterKey, encrypedStr);
+    const jsonStr = this.cryptoService.decrypt(this._masterKey, encrypedStr);
     let tmpData = JSON.parse(jsonStr) as SamModel;
     tmpData.mapData = new Map<number, KeyObjModel>(JSON.parse(tmpData.encryptedData));
     tmpData.encryptedData = '';
@@ -38,12 +36,12 @@ export class KeyService {
   }
   /** authentication was successful */
   public setMasterkey(masterKey: string) {
-    this.masterKey = masterKey;
+    this._masterKey = masterKey;
   }
 
   /** called also by import */
   public saveKeyLocalStorage(): void {
-    const encryptedMap = this.cryptoService.encrypt(this.masterKey, JSON.stringify(this.genarateSaveObj()));
+    const encryptedMap = this.cryptoService.encrypt(this._masterKey, JSON.stringify(this.genarateSaveObj()));
     localStorage.setItem(this.KEY, encryptedMap);
     this.triggerUpdate();
   }
@@ -77,10 +75,10 @@ export class KeyService {
   /** decrypt for display */
   public decryptKeyObj(keyObj: KeyObjModel) {
     if (keyObj.type === 'Account') {
-      keyObj.user = this.cryptoService.decrypt(this.masterKey + keyObj.created, keyObj.user);
-      keyObj.pass = this.cryptoService.decrypt(this.masterKey + keyObj.created, keyObj.pass);
+      keyObj.user = this.cryptoService.decrypt(this._masterKey + keyObj.created, keyObj.user);
+      keyObj.pass = this.cryptoService.decrypt(this._masterKey + keyObj.created, keyObj.pass);
     } else {
-      keyObj.text = this.cryptoService.decrypt(this.masterKey + keyObj.created, keyObj.text);
+      keyObj.text = this.cryptoService.decrypt(this._masterKey + keyObj.created, keyObj.text);
     }
   }
 
@@ -101,10 +99,10 @@ export class KeyService {
   /** encrypt important data twice */
   private encryptKeyObj(keyObj: KeyObjModel) {
     if (keyObj.type === 'Account') {
-      keyObj.user = this.cryptoService.encrypt(this.masterKey + keyObj.created, keyObj.user);
-      keyObj.pass = this.cryptoService.encrypt(this.masterKey + keyObj.created, keyObj.pass);
+      keyObj.user = this.cryptoService.encrypt(this._masterKey + keyObj.created, keyObj.user);
+      keyObj.pass = this.cryptoService.encrypt(this._masterKey + keyObj.created, keyObj.pass);
     } else {
-      keyObj.text = this.cryptoService.encrypt(this.masterKey + keyObj.created, keyObj.text);
+      keyObj.text = this.cryptoService.encrypt(this._masterKey + keyObj.created, keyObj.text);
     }
   }
 
