@@ -41,8 +41,8 @@ export class KeyService {
 
   /** called also by import */
   public saveKeyLocalStorage(): void {
-    const encryptedMap = this.cryptoService.encrypt(this._masterKey, JSON.stringify(this.genarateSaveObj()));
-    localStorage.setItem(this.KEY, encryptedMap);
+    const encryptedObj = this.cryptoService.encrypt(this._masterKey, JSON.stringify(this.genarateSaveObj()));
+    localStorage.setItem(this.KEY, encryptedObj);
     this.triggerUpdate();
   }
 
