@@ -9,7 +9,7 @@ export class CryptoService {
   /**
    * encrypt
    */
-  encrypt(masterKey, plainText) {
+  encrypt(masterKey: string, plainText: string): string {
     const encText = CryptoJS.AES.encrypt(plainText, masterKey).toString();
     return encText
   }
@@ -17,7 +17,7 @@ export class CryptoService {
   /**
    * decrypt
    */
-  decrypt(masterKey, crypted) {
+  decrypt(masterKey: string, crypted: string): string {
     let decText = '';
     try {
       decText = CryptoJS.AES.decrypt(crypted, masterKey).toString(CryptoJS.enc.Utf8);
