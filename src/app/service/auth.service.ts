@@ -23,6 +23,12 @@ export class AuthService implements CanActivate {
     this._isAuthenticated = this.checkMasterKey(masterkey);
     return this._isAuthenticated;
   }
+  
+  logout(): void {
+    this._isAuthenticated = false;
+    this.keyService.setMasterkey('');
+    this.router.navigate(['/login']);
+  }
 
   canActivate(route) {
     am_console.log('AuthService#canActivate called');
@@ -38,17 +44,13 @@ export class AuthService implements CanActivate {
     return this._isAuthenticated;
   }
   
-  // TODO implement
-  logout(): void {
-    
-  }
 
   checkMasterKey(masterKey: string): boolean {
     const loginPass = localStorage.getItem(this.theBoss);
     if (loginPass === null) {
       // the first login
       localStorage.setItem(this.theBoss, this.cryptoService.encrypt(masterKey, this.theBoss));
-      this.openSnackBar(AmConst.first_login, null, 6000);
+      this.openSnackBar(AmConst.first_login, null, 10000);
       this.keyService.setMasterkey(masterKey);
       return true;
     } else {
@@ -57,7 +59,7 @@ export class AuthService implements CanActivate {
         // success
         this.keyService.setMasterkey(masterKey);
         this.keyService.loadKeyFromLocalStorage();
-        this.openSnackBar(AmConst.welcomeText, null, 3000);
+        this.openSnackBar(AmConst.welcomeText, null, 4000);
         return true;
       } else {
         // error

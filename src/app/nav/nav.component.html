@@ -25,6 +25,10 @@
       <mat-icon>help_outline</mat-icon>
       <span>FAQ</span>
     </button>
+    <button mat-button color="accent" *ngIf="auth" (click)="logout()">
+      <mat-icon>exit_to_app</mat-icon>
+      <span>Logout</span>
+    </button>
   </div>
 </div>
 <mat-menu #menu="matMenu" xPosition="before" [overlapTrigger]="false">

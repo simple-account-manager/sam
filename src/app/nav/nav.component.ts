@@ -7,6 +7,7 @@ import { KeyObjModel } from '../model/key.model';
 import { MatDialog } from '@angular/material';
 import { DialogImportTextComponent } from '../dialog/dialog-import-text/dialog-import-text.component';
 import { am_console } from '../app.util';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-nav',
@@ -20,6 +21,7 @@ export class NavComponent implements OnInit {
 
   constructor(private exportService: ExportService,
               private importService: ImportService,
+              private authService: AuthService,
               private dialog: MatDialog) { }
 
   ngOnInit() {
@@ -52,5 +54,9 @@ export class NavComponent implements OnInit {
       this.navToggler.click();
     };
     reader.readAsText(target.files[0]);
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }
