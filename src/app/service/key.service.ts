@@ -29,7 +29,7 @@ export class KeyService {
   /** called also by import */
   public generateObjFromEncryped(encrypedStr: string): SamModel {
     const jsonStr = this.cryptoService.decrypt(this._masterKey, encrypedStr);
-    let tmpData = JSON.parse(jsonStr) as SamModel;
+    const tmpData = JSON.parse(jsonStr) as SamModel;
     tmpData.mapData = new Map<number, KeyObjModel>(JSON.parse(tmpData.encryptedData));
     tmpData.encryptedData = '';
     return tmpData;
@@ -88,14 +88,14 @@ export class KeyService {
   }
 
   /** generates Obj for save */
-  private genarateSaveObj(): SamModel{
-    let tmpObj = {} as SamModel;
+  private genarateSaveObj(): SamModel {
+    const tmpObj = {} as SamModel;
     tmpObj.loginCount = this._data.loginCount;
     tmpObj.version = AmConst.sam_version;
     tmpObj.encryptedData = JSON.stringify(Array.from(this._data.mapData));
     return tmpObj
   }
-  
+
   /** encrypt important data twice */
   private encryptKeyObj(keyObj: KeyObjModel) {
     if (keyObj.type === 'Account') {

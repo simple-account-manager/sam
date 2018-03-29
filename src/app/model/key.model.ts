@@ -13,7 +13,7 @@ export class KeyObjModel {
 /**
  * from GUI
  */
-export class PlainKeyObjModel extends KeyObjModel{
+export class PlainKeyObjModel extends KeyObjModel {
   oldTitle: string;
   skip: boolean;
 }

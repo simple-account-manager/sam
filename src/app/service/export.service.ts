@@ -27,7 +27,7 @@ export class ExportService {
     return now.getFullYear() + '-' +
       this.format(now.getMonth() + 1) + '-' +
       this.format(now.getDate()) + '-' +
-      this.format(now.getHours()) + '-' + 
+      this.format(now.getHours()) + '-' +
       this.format(now.getMinutes()) + '-' +
       this.format(now.getSeconds())
   }

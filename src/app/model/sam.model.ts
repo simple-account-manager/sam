@@ -1,4 +1,4 @@
-import { KeyObjModel } from "app/model/key.model";
+import { KeyObjModel } from './key.model';
 
 export class SamModel {
   loginCount = 0;

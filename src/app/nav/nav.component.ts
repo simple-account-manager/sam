@@ -25,7 +25,6 @@ export class NavComponent implements OnInit {
               private dialog: MatDialog) { }
 
   ngOnInit() {
-    am_console.log('OnInit NAV: ');
     this.navToggler = document.getElementById('navToggler');
   }
 

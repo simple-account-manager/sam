@@ -13,7 +13,7 @@ export class FaqComponent implements OnInit {
   input = '';
   private searchStr = '';
 
-  constructor() { 
+  constructor() {
     // TODO ignore html tags
     this.faqs = constFAQs.map((faq) => {
       faq['q_low'] = faq.q.toLowerCase();
@@ -39,7 +39,7 @@ export class FaqComponent implements OnInit {
       this.filteredFaqs = this.faqs;
     }
   }
-  
+
   searchImpl() {
     this.filteredFaqs = this.faqs.filter((faq) => {
       return faq.q_low.includes(this.searchStr) || faq.a_low.includes(this.searchStr);
@@ -47,11 +47,11 @@ export class FaqComponent implements OnInit {
   }
 
   stripHtml(html) {
-    const temporalDivElement = document.createElement("div");
+    const temporalDivElement = document.createElement('div');
     // Set the HTML content with the providen
     temporalDivElement.innerHTML = html;
     // Retrieve the text property of the element (cross-browser support)
-    return temporalDivElement.textContent || temporalDivElement.innerText || "";
+    return temporalDivElement.textContent || temporalDivElement.innerText || '';
   }
 
 }

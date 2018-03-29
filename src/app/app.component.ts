@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import {AuthService} from "./service/auth.service";
-import {environment} from "../environments/environment";
-import {am_console} from "./app.util";
+import {AuthService} from './service/auth.service';
+import {environment} from '../environments/environment';
+import {am_console} from './app.util';
 
 @Component({
   selector: 'app-root',

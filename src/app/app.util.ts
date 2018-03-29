@@ -1,4 +1,4 @@
-import {environment} from "../environments/environment";
+import {environment} from '../environments/environment';
 
 export const am_console = {
   log: (msg: string, obj?: any) => {

@@ -50,11 +50,11 @@ export class DialogCreatekeyComponent implements OnInit {
       event.stopPropagation();
     } else {
       this.cleanUpData(this.keyObj);
-      let isNewObj = typeof this.keyObj.created === 'undefined';
+      const isNewObj = typeof this.keyObj.created === 'undefined';
       this.keyService.saveKeyToMap(this.keyObj);
       this.dialogRef.close();
       // show save|update msg
-      this.snackbarService.openSnackBar(`${this.keyObj.type} ${isNewObj ? AmConst.saved: AmConst.updated}`, 2000);
+      this.snackbarService.openSnackBar(`${this.keyObj.type} ${isNewObj ? AmConst.saved : AmConst.updated}`, 2000);
     }
   }
 

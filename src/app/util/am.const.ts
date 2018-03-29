@@ -1,5 +1,5 @@
 export class AmConst {
-  private static welcome = ['Hey :)', 'Good to see you agian!', 'Hi, please remember to backup.',];
+  private static welcome = ['Hey :)', 'Good to see you agian!', 'Hi, please remember to backup.'];
   static first_login = 'Please notice your masterkey for relogin!';
 
   static sam_version = '1.0.0'

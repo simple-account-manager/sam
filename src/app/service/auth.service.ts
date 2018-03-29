@@ -23,7 +23,7 @@ export class AuthService implements CanActivate {
     this._isAuthenticated = this.checkMasterKey(masterkey);
     return this._isAuthenticated;
   }
-  
+
   logout(): void {
     this._isAuthenticated = false;
     this.keyService.setMasterkey('');
@@ -43,7 +43,6 @@ export class AuthService implements CanActivate {
   isAuthenticated(): boolean {
     return this._isAuthenticated;
   }
-  
 
   checkMasterKey(masterKey: string): boolean {
     const loginPass = localStorage.getItem(this.theBoss);
