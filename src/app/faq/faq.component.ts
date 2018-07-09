@@ -59,10 +59,11 @@ export class FaqComponent implements OnInit {
 const constFAQs = [
   {
     q: 'What the hell is a masterkey?',
-    a: 'Is the key to encrypt and decrypt your whole data in this applaction. So be <strong>very very</strong> careful with it!'
+    a: 'This key is used to encrypt and decrypt your whole data in this application. So be <strong>very very</strong> careful with it!'
   },
   {
     q: 'Which encryption standard is been used?',
-    a: 'AES'
+    a: `Advanced Encryption Standard (AES). Please read more here.
+        <a href="https://en.wikipedia.org/wiki/Advanced_Encryption_Standard" target="_blank" rel="nofollow noreferrer">Wikipedia</a>`
   },
 ]
